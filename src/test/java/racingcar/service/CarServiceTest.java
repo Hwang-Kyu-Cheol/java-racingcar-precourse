@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,5 +35,14 @@ class CarServiceTest {
         assertThat(cars.size()).isEqualTo(2);
         assertThat(cars.get(0).getName()).isEqualTo("car1");
         assertThat(cars.get(1).getName()).isEqualTo("car2");
+    }
+
+    @Test
+    @DisplayName("Randoms.pickNumberInRange(0, 9) 함수는 0 이상 9 이하의 숫자만을 반환합니다.")
+    void random() {
+        for (int i = 0; i < 100; i++) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            assertThat(randomNumber).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(9);
+        }
     }
 }
