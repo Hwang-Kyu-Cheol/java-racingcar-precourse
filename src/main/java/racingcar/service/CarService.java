@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 import racingcar.repository.CarRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarService {
@@ -36,6 +37,26 @@ public class CarService {
                 car.go();
             }
         });
+    }
+
+    /**
+     * 핵심 기능 : 우승자를 판단하는 기능
+     * @return List<Car>
+     */
+    public List<Car> findWinner() {
+        List<Car> result = new ArrayList<>();
+        List<Car> cars = carRepository.findAll();
+        int max = 0;
+        for (Car car : cars) {
+            if (car.getPosition() > max) {
+                max = car.getPosition();
+                result.clear();
+                result.add(car);
+            } else if (car.getPosition() == max) {
+                result.add(car);
+            }
+        }
+        return result;
     }
 
     /** 비즈니스 로직 **/

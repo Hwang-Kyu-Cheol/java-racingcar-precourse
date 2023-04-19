@@ -45,4 +45,41 @@ class CarServiceTest {
             assertThat(randomNumber).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(9);
         }
     }
+
+    @Test
+    @DisplayName("우승자가 한명일 경우, 리스트에는 한명만 존재합니다.")
+    void findWinner_one() {
+        //given
+        Car car1 = new Car("1");
+        Car car2 = new Car("2");
+        car1.go();
+        carRepository.save(car1);
+        carRepository.save(car2);
+
+        //when
+        List<Car> winners = carService.findWinner();
+
+        //then
+        assertThat(winners.size()).isEqualTo(1);
+        assertThat(winners).contains(car1);
+    }
+
+    @Test
+    @DisplayName("우승자가 여러명일 경우, 리스트에는 여러명 모두 존재합니다.")
+    void findWinner_many() {
+        //given
+        Car car1 = new Car("1");
+        Car car2 = new Car("2");
+        car1.go();
+        car2.go();
+        carRepository.save(car1);
+        carRepository.save(car2);
+
+        //when
+        List<Car> winners = carService.findWinner();
+
+        //then
+        assertThat(winners.size()).isEqualTo(2);
+        assertThat(winners).contains(car1, car2);
+    }
 }
