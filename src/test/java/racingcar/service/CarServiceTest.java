@@ -9,7 +9,6 @@ import racingcar.repository.CarRepository;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -70,8 +69,6 @@ class CarServiceTest {
         //given
         Car car1 = new Car("1");
         Car car2 = new Car("2");
-        car1.go();
-        car2.go();
         carRepository.save(car1);
         carRepository.save(car2);
 

@@ -54,4 +54,25 @@ class ValidatorTest {
         //then
         assertDoesNotThrow(() -> Validator.validateCarNames(input));
     }
+
+    @Test
+    @DisplayName("문자열이 정수로 변경될 수 없을 경우, IllegalArgumentException이 발생합니다.")
+    void validateCount_notNumber() {
+        //given
+        String input = "1,000";
+
+        //then
+        assertThatThrownBy(() -> Validator.validateCount(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("문자열이 정수로 변경될 수 있는 경우, 예외가 발생하지 않습니다.")
+    void validateCount_isNumber() {
+        //given
+        String input = "1000";
+
+        //then
+        assertDoesNotThrow(() -> Validator.validateCount(input));
+    }
 }
