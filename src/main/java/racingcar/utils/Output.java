@@ -15,6 +15,7 @@ public class Output {
     }
 
     public static void displayMatchingResult() {
+        System.out.println();
         System.out.println("실행 결과");
     }
 
@@ -22,6 +23,7 @@ public class Output {
         cars.forEach(car -> {
             displayCar(car);
         });
+        System.out.println();
     }
 
     public static void displayWinners(List<Car> cars) {

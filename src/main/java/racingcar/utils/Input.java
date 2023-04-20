@@ -26,6 +26,7 @@ public class Input {
                 Validator.validateCount(input);
             } catch (IllegalArgumentException e) {
                 Output.displayError(e);
+                continue;
             }
             return Resolver.resolveCount(input);
         }
