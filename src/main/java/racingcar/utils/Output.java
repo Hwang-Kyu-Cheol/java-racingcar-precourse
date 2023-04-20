@@ -4,6 +4,9 @@ import racingcar.domain.Car;
 
 import java.util.List;
 
+/**
+ * 화면에 출력되는 메시지를 만드는 기능
+ */
 public class Output {
 
     public static void enterCarNames() {
