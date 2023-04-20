@@ -1,5 +1,7 @@
 package racingcar.utils;
 
+import racingcar.constant.ErrorMessage;
+
 public class Validator {
 
     /**
@@ -10,7 +12,7 @@ public class Validator {
      */
     public static void validateCarNames(String input) throws IllegalArgumentException {
         if (input.endsWith(",")) {
-            throw new IllegalArgumentException("에러 메시지");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAMES);
         }
         String[] carNames = input.split(",");
         for (String carName : carNames) {
@@ -28,14 +30,14 @@ public class Validator {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("에러 메시지");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_COUNT);
         }
     }
 
     /** 비즈니스 로직 **/
     private static void validateCarName(String name) {
         if (name.isEmpty() || name.length() > 5) {
-            throw new IllegalArgumentException("에러 메시지");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAMES);
         }
     }
 }
