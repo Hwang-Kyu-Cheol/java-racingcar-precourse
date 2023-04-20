@@ -29,7 +29,7 @@ public class Output {
         System.out.println();
     }
 
-    public static void displayWinners(List<Car> cars) {
+    public static void displayWinner(List<Car> cars) {
         String output = "최종 우승자 : " + cars.get(0).getName();
         for (int i = 1; i < cars.size(); i++) {
             output += (", "  + cars.get(i).getName());

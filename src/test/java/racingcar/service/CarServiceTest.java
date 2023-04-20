@@ -2,6 +2,7 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
@@ -9,6 +10,7 @@ import racingcar.repository.CarRepository;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -18,6 +20,11 @@ class CarServiceTest {
 
     CarRepository carRepository = new CarRepository();
     CarService carService = new CarService(carRepository);
+
+    @BeforeEach
+    void beforeEach() {
+        carRepository.clear();
+    }
 
     @Test
     @DisplayName("문자열 리스트로 전달된 차 이름은 차가 생성되어 저장소에 저장됩니다.")
@@ -30,7 +37,7 @@ class CarServiceTest {
 
         //then
         List<Car> cars = carRepository.findAll();
-        cars.sort((car1, car2) -> car1.getName().compareTo(car2.getName()));
+        Collections.sort(cars);
         assertThat(cars.size()).isEqualTo(2);
         assertThat(cars.get(0).getName()).isEqualTo("car1");
         assertThat(cars.get(1).getName()).isEqualTo("car2");
@@ -56,7 +63,7 @@ class CarServiceTest {
         carRepository.save(car2);
 
         //when
-        List<Car> winners = carService.findWinner();
+        List<Car> winners = carService.getWinner();
 
         //then
         assertThat(winners.size()).isEqualTo(1);
@@ -73,7 +80,7 @@ class CarServiceTest {
         carRepository.save(car2);
 
         //when
-        List<Car> winners = carService.findWinner();
+        List<Car> winners = carService.getWinner();
 
         //then
         assertThat(winners.size()).isEqualTo(2);

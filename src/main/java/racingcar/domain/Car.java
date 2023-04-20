@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private final String name;
     private int position = 0;
 
@@ -18,5 +18,10 @@ public class Car {
 
     public void go() {
         position++;
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return o.getPosition() - position;
     }
 }

@@ -2,6 +2,7 @@ package racingcar.repository;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
@@ -16,8 +17,8 @@ class CarRepositoryTest {
 
     CarRepository repository = new CarRepository();
 
-    @AfterEach
-    void afterEach() {
+    @BeforeEach
+    void beforeEach() {
         repository.clear();
     }
 

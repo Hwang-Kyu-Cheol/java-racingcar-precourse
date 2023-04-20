@@ -26,7 +26,7 @@ public class CarController {
             List<Car> cars = carService.play();
             Output.displayCars(cars);
         }
-        List<Car> winners = carService.findWinner();
-        Output.displayWinners(winners);
+        List<Car> winner = carService.getWinner();
+        Output.displayWinner(winner);
     }
 }
