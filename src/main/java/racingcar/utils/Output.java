@@ -47,10 +47,10 @@ public class Output {
     }
 
     private static String makePositionToString(int position) {
-        String output = "";
+        StringBuffer output = new StringBuffer();
         while (position-- > 0) {
-            output += "-";
+            output.append("-");
         }
-        return output;
+        return output.toString();
     }
 }
